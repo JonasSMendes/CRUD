@@ -7,7 +7,10 @@ export const ping = (req: Request, res: Response) => {
 
 export const all = async (req: Request, res: Response) =>{
     const list = await todo.findAll();
-    res.json({list});
+
+    res.render('pages/page',{
+        list
+    });
 }
 
 export const add = async (req: Request, res: Response) =>{
