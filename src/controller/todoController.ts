@@ -24,32 +24,22 @@ export const add = async (req: Request, res: Response) =>{
 
     res.redirect('/');
 }
-/*
+
 export const update = async (req: Request, res: Response) =>{
 
-    const id: string = req.params.id;
+    let id = req.params.id
+    let update = req.body.update
+    let done = req.body.done
 
-    let to_do = await todo.findByPk(id);
-    if(to_do){
-    if(req.body.title){
-        to_do.title = req.body.title;
+    let results = await todo.findAll({ where: {id} })
+    if(results.length > 0){
+        let usuario = results[0]
+            if(update){
+                usuario.title = update
+            }
+        await usuario.save()
     }
-    if(req.body.done){
-        switch(req.body.done.toLowerCase()){
-            case 'true':
-            case '1':
-                to_do.done = true ;
-                break;
-            case 'false':
-            case '0':
-                to_do.done = false;
-                break;
-        }
-    }
-
-    await to_do.save();
-    res.json({ item: to_do });
-}
+    res.redirect('/')
 }
 
 export const remove = async (req: Request, res: Response) =>{
@@ -59,6 +49,5 @@ export const remove = async (req: Request, res: Response) =>{
         await to_do.destroy();
     }
 
-    res.json({})
+    res.redirect('/')
 }
-*/

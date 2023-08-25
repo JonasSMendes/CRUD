@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,36 @@
   <title>ToDo List</title>
 </head>
 <body>
-  <div id="todo-container">
-    <h2>ToDo List</h2>
-    {{#list}}
-    <ul id="todo-list">
-      <li>
-        <input type="checkbox">
-        <span>{{title}}</span>
-        <span> -- 🗑️</span>
-      </li>
-    </ul>
-     {{/list}}
 
-<fieldset>
-    <form method= "POST" action="/novopost">
-       <input type="text" name='title' placeholder="Adicionar nova tarefa">
-      <input value='enviar' type="submit" >
+  <h2>ToDo List Demo</h2>
+  <p>Oque fazer hoje?</p>
+  <div id=" todo-container">
+  
+  <fieldset>
+    <form method="POST" action="/novopost">
+      <input type="text" name='title' placeholder="Adicionar nova tarefa">
+      <input value='enviar' type="submit">
     </form>
-</fieldset>
+  </fieldset>
+
+  {{#list}}
+  <ul id="todo-list">
+    <li>
+      <input type="checkbox">
+      <span>{{title}}</span>
+      <a href="/tarefa/{{id}}/excluir"> Apagar <img src="/public/image/icons8-lixeira-30.png" alt=""></a>
+      <form method="POST" action="/tarefa/{{id}}/update">
+        <input type="text" name='update' placeholder="editar tarefa">
+        <input value='enviar' type="submit">
+      </form>
+    </li>
+  </ul>
+  {{/list}}
+
+
 
   </div>
   <script src="script.js"></script>
-</body>
+  </body>
+
 </html>

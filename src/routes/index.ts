@@ -8,8 +8,9 @@ const router = Router();
 router.get('/', todoController.all);
 router.post('/novopost', todoController.add)
 
-
-//router.put('/todo/:id', todoController.update)
-//router.delete('/todo/:id', todoController.remove)
+//Atualizando dados
+router.post('/tarefa/:id/update', todoController.update)
+//excluir
+router.get('/tarefa/:id/excluir', todoController.remove);
 
 export default router;
