@@ -19,10 +19,13 @@
     </ul>
      {{/list}}
 
-    <form method= "POST" action='/todos'>
-       <input type="text" id="title" placeholder="Adicionar nova tarefa">
+<fieldset>
+    <form method= "POST" action="/novopost">
+       <input type="text" name='title' placeholder="Adicionar nova tarefa">
       <input value='enviar' type="submit" >
     </form>
+</fieldset>
+
   </div>
   <script src="script.js"></script>
 </body>

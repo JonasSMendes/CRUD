@@ -14,18 +14,17 @@ export const all = async (req: Request, res: Response) =>{
 }
 
 export const add = async (req: Request, res: Response) =>{
-    if(req.body.title){
-        let list = await todo.create({
-            title: req.body.title,
-            done: req.body.done ? true : false
-        }) 
+    let title  = req.body;
 
-        res.render('pages/page', {
-            list
-        })
+    if(title) {
+        const newUser = todo.build( title );
+
+        await newUser.save();
     }
-}
 
+    res.redirect('/');
+}
+/*
 export const update = async (req: Request, res: Response) =>{
 
     const id: string = req.params.id;
@@ -62,3 +61,4 @@ export const remove = async (req: Request, res: Response) =>{
 
     res.json({})
 }
+*/
